@@ -140,7 +140,6 @@ const CheckoutPage: React.FC = () => {
   const [zip, setZip] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -154,8 +153,6 @@ const CheckoutPage: React.FC = () => {
   const total = subtotal + shipping;
 
   const handleOrderSuccess = async () => {
-    setLoading(true);
-    setError(null);
     try {
       await submitOrder({
         customerName: name,
@@ -170,8 +167,6 @@ const CheckoutPage: React.FC = () => {
       setSuccess(true);
     } catch (err: any) {
       setError(err?.response?.data?.error || 'Order submission failed');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -303,4 +298,4 @@ const CheckoutPage: React.FC = () => {
   );
 };
 
-export default CheckoutPage; 
+export default CheckoutPage;

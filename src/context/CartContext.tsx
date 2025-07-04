@@ -140,27 +140,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
 
-  const updateCart = (items: CartItem[]) => {
-    setCart(items);
-    if (isLoggedIn()) {
-      api.post('/users/cart', { items }).catch(err => {
-        if (err.response && (err.response.status === 401 || err.response.status === 403)) {
-          localStorage.removeItem('token');
-          setCart([]);
-          setCartError(null); // Don't show error for auth issues
-        } else {
-          // Only show error for non-auth issues
-          console.error('Cart update error:', err);
-          setCartError('An error occurred while updating your cart. Please try again later.');
-        }
-      });
-    }
-  };
-
   return (
     <CartContext.Provider value={{ cart, addToCart, updateQuantity, removeFromCart, cartCount }}>
       {cartError && <div style={{ color: 'red', textAlign: 'center', margin: '16px 0' }}>{cartError}</div>}
       {children}
     </CartContext.Provider>
   );
-}; 
+};

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa';
+import { FaUser, FaShoppingCart } from 'react-icons/fa';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -23,7 +23,6 @@ interface UserInfo {
 const Navbar: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
   const { cartCount } = useCart();
 
@@ -47,13 +46,6 @@ const Navbar: React.FC = () => {
     setIsLoggedIn(false);
     setUserInfo(null);
     navigate('/login');
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/shop?q=${searchQuery.trim()}`);
-    }
   };
 
   return (
@@ -96,9 +88,6 @@ const Navbar: React.FC = () => {
             {FaUser({})} Log In
           </a>
         )}
-        <a href="/search" className="nav-action-new">
-          {FaSearch({})} Search
-        </a>
         <a href="/cart" className="nav-action-new cart-link">
           {FaShoppingCart({})}
           {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
@@ -108,4 +97,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
