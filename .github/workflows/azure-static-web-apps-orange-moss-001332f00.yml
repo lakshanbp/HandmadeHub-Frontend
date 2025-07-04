@@ -28,7 +28,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ORANGE_MOSS_001332F00 }}
           action: "upload"
-          app_location: "frontend"          # ✅ Location of your React source code
+          app_location: "/"          # ✅ Location of your React source code
           api_location: ""                  # ✅ No Azure Functions
           output_location: "build"          # ✅ Where React outputs build files
 
