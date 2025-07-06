@@ -54,7 +54,7 @@ const CheckoutForm: React.FC<{
     setSuccess('');
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/payments/create-payment-intent', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/payments/create-payment-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: Math.round(amount * 100) })
