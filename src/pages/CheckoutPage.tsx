@@ -263,7 +263,7 @@ const CheckoutPage: React.FC = () => {
             <div className="checkout-payment-methods" style={{ margin: '18px 0 14px 0', display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: '#888' }}>
               <span>Support payment methods:</span>
               <img src="/images/visa.png" alt="Visa" style={{ height: 22 }} />
-              <img src="/images/mastercard.png" alt="MasterCard" style={{ height: 22 }} />
+              <img src="/images/Mastercard.png" alt="MasterCard" style={{ height: 22 }} />
               <img src="/images/amex.png" alt="Amex" style={{ height: 22 }} />
               <img src="/images/discover.png" alt="Discover" style={{ height: 22 }} />
             </div>
