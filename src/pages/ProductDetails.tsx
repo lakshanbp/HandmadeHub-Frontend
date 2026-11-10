@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchProductById, fetchReviewsByProduct, fetchRelatedProducts, submitReview } from '../services/api';
+import { fetchProductById, fetchReviewsByProduct, submitReview } from '../services/api';
 import Navbar from '../components/Navbar';
 import './ProductDetails.css';
 import { useCart } from '../context/CartContext';
@@ -24,12 +24,6 @@ interface Review {
   createdAt: string;
 }
 
-interface DecodedToken {
-  id: string;
-  role: string;
-  name: string;
-}
-
 const accent = '#efd1a1';
 
 const ProductDetails: React.FC = () => {
@@ -39,9 +33,8 @@ const ProductDetails: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [related, setRelated] = useState<Product[]>([]);
-  const [activeAccordion, setActiveAccordion] = useState<string | null>('info');
   const [rating, setRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
   const [comment, setComment] = useState('');
   const [reviewError, setReviewError] = useState('');
   const navigate = useNavigate();
@@ -58,10 +51,6 @@ const ProductDetails: React.FC = () => {
       .then(res => {
         setProduct(res.data);
         setLoading(false);
-        // Fetch related products by category
-        if (res.data.category) {
-          fetchRelatedProducts(res.data.category, res.data._id).then(setRelated);
-        }
       })
       .catch(() => {
         setError('Failed to load product');
@@ -236,7 +225,7 @@ const ProductDetails: React.FC = () => {
             </div>
 
             <div style={{ color: '#888', fontSize: 15, marginBottom: 8 }}>Sales Count: 0</div>
-            <a href="#" className="view-more-info" style={{ color: '#4f46e5', fontWeight: 500 }}>View More Product Info</a>
+            <span className="view-more-info" style={{ color: '#4f46e5', fontWeight: 500 }}>View More Product Info</span>
           </div>
         </div>
 
@@ -313,11 +302,11 @@ const ProductDetails: React.FC = () => {
                   {[1, 2, 3, 4, 5].map(star => (
                     <span
                       key={star}
-                      className={star <= rating ? 'filled' : ''}
+                      className={star <= (hoveredRating || rating) ? 'filled' : ''}
                       onClick={() => setRating(star)}
-                      onMouseEnter={() => setActiveAccordion('star-' + star)}
-                      onMouseLeave={() => setActiveAccordion(null)}
-                      style={{ cursor: 'pointer', fontSize: 28, color: star <= rating ? '#f5b301' : '#ccc', transition: 'color 0.2s' }}
+                      onMouseEnter={() => setHoveredRating(star)}
+                      onMouseLeave={() => setHoveredRating(0)}
+                      style={{ cursor: 'pointer', fontSize: 28, color: star <= (hoveredRating || rating) ? '#f5b301' : '#ccc', transition: 'color 0.2s' }}
                     >
                       ★
                     </span>

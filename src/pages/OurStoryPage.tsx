@@ -3,9 +3,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './OurStoryPage.css';
 
-// Using an existing image from the public folder
-import storyImage from '../../public/images/image_5.jpg'; 
-
 const OurStoryPage: React.FC = () => {
   return (
     <>

@@ -91,7 +91,13 @@ const CheckoutForm: React.FC<{
           {countries.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
         {!showManualAddress && (
-          <a href="#" style={{ color: '#666', fontSize: 14, textDecoration: 'underline', marginTop: 4 }} onClick={e => { e.preventDefault(); setShowManualAddress(true); }}>Enter address manually</a>
+          <button
+            type="button"
+            style={{ color: '#666', fontSize: 14, textDecoration: 'underline', marginTop: 4, padding: 0, border: 0, background: 'none', textAlign: 'left', cursor: 'pointer' }}
+            onClick={() => setShowManualAddress(true)}
+          >
+            Enter address manually
+          </button>
         )}
         {showManualAddress && (
           <div style={{ marginTop: 4, display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -267,7 +273,8 @@ const CheckoutPage: React.FC = () => {
           </div>
         </div>
         {/* Right: Shipping & Payment */}
-        <div style={{ flex: 1.2, display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 350 }}>
+        <div style={{ flex: 1.2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 350 }}>
+          {error && <div role="alert" style={{ width: '100%', maxWidth: 500, color: 'red', margin: '0 0 12px', fontWeight: 500 }}>{error}</div>}
           <Elements stripe={stripePromise}>
             <CheckoutForm
               amount={total}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -35,7 +35,7 @@ const SearchPage: React.FC = () => {
   }, [location.search]);
 
   // Fetch products based on search and filters
-  const performSearch = async () => {
+  const performSearch = useCallback(async () => {
     if (!searchQuery.trim()) return;
     
     setLoading(true);
@@ -69,14 +69,14 @@ const SearchPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchQuery, selectedCategory, priceRange]);
 
   // Search when query changes
   useEffect(() => {
     if (searchQuery.trim()) {
       performSearch();
     }
-  }, [searchQuery, selectedCategory, priceRange]);
+  }, [performSearch, searchQuery]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();

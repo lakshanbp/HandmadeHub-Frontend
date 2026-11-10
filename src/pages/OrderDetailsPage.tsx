@@ -41,22 +41,34 @@ const OrderDetailsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (id) {
-      fetchOrderDetails();
-    }
-  }, [id]);
+    if (!id) return;
 
-  const fetchOrderDetails = async () => {
-    try {
-      const response = await api.get(`/orders/${id}`);
-      setOrder(response.data);
-      setError(null);
-    } catch (err: any) {
-      setError(err?.response?.data?.error || 'Failed to fetch order details');
-    } finally {
-      setLoading(false);
-    }
-  };
+    let isActive = true;
+    setLoading(true);
+
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await api.get(`/orders/${id}`);
+        if (isActive) {
+          setOrder(response.data);
+          setError(null);
+        }
+      } catch (err: any) {
+        if (isActive) {
+          setError(err?.response?.data?.error || 'Failed to fetch order details');
+        }
+      } finally {
+        if (isActive) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchOrderDetails();
+    return () => {
+      isActive = false;
+    };
+  }, [id]);
 
   const getStatusIcon = (status: string) => {
     switch (status) {

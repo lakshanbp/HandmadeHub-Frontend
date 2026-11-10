@@ -122,9 +122,11 @@ export const updateArtisanRequest = (requestId: string, status: 'approved' | 're
 //
 // ✅ Default export for advanced use (optional)
 //
-export default {
+const apiClient = {
   get: api.get,
   post: api.post,
   put: api.put,
   delete: api.delete,
 };
+
+export default apiClient;

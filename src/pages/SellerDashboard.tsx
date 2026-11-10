@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import { FaBox, FaClipboardList, FaChartLine, FaPlusCircle, FaEdit, FaTrash, FaTimes, FaMoneyBillWave, FaTruck } from 'react-icons/fa';
+import { FaBox, FaClipboardList, FaChartLine, FaEdit, FaTimes, FaMoneyBillWave, FaTruck } from 'react-icons/fa';
 import { fetchMyProducts, createProduct, updateProduct, deleteProduct } from '../services/api';
 import './SellerDashboard.css';
 import apiClient from '../services/api';

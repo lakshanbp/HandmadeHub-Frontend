@@ -63,7 +63,7 @@ const RegisterPage: React.FC = () => {
     
     setLoading(true);
     try {
-      const res = await registerUser({ name, email, password, role });
+      await registerUser({ name, email, password, role });
       setIsSuccess(true);
     } catch (e: any) {
       console.error('Registration error:', e);
