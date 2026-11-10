@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useCart } from '../context/CartContext';
+import './CheckoutPage.css';
 
 const stripePromise = loadStripe('pk_test_51Re4zJRwYjuH1xrhKi5pLBOISVfrnORvcQcLlNVsK0d2jIG4hnz4hkmi8ilU3WcRW5qw18PKsnZdeP4fItXcneew00S6NABEHS');
 
@@ -79,7 +80,7 @@ const CheckoutForm: React.FC<{
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: 36, width: '100%', maxWidth: 500, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 18 }}>
+    <form className="checkout-form" onSubmit={handleSubmit} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: 36, width: '100%', maxWidth: 500, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 18 }}>
       <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 10, color: '#222' }}>Shipping information</h3>
       <div style={{ marginBottom: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
         <label style={{ fontWeight: 500, color: '#444' }}>Email</label>
@@ -239,9 +240,9 @@ const CheckoutPage: React.FC = () => {
         <div className="checkout-summary" style={{ flex: 1, background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '48px 40px 40px 56px', minWidth: 340, marginBottom: 24 }}>
           <div style={{ fontSize: 40, fontWeight: 800, marginBottom: 32, color: '#39324a' }}>${total.toFixed(2)}</div>
           {cart.map(item => (
-            <div key={item._id} style={{ display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22 }}>
+            <div className="checkout-item" key={item._id} style={{ display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22 }}>
               <img src={(item.images && item.images[0]) || 'https://via.placeholder.com/56'} alt={item.name} style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 12, background: '#eee', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }} />
-              <div style={{ flex: 1 }}>
+              <div className="checkout-item-info" style={{ flex: 1 }}>
                 <div style={{ fontWeight: 700, fontSize: 18, color: '#222' }}>{item.name}</div>
                 <div style={{ color: '#888', fontSize: 14, marginTop: 2 }}>Qty {item.quantity}</div>
                 {item.quantity > 1 && <div style={{ color: '#aaa', fontSize: 13 }}>${(item.price / item.quantity).toFixed(2)} each</div>}
@@ -259,7 +260,7 @@ const CheckoutPage: React.FC = () => {
               <span>${shipping.toFixed(2)}</span>
             </div>
             <div style={{ color: '#aaa', fontSize: 13, marginBottom: 12 }}>Ground shipping (3-5 business days)</div>
-            <div style={{ margin: '18px 0 14px 0', display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: '#888' }}>
+            <div className="checkout-payment-methods" style={{ margin: '18px 0 14px 0', display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: '#888' }}>
               <span>Support payment methods:</span>
               <img src="/images/visa.png" alt="Visa" style={{ height: 22 }} />
               <img src="/images/mastercard.png" alt="MasterCard" style={{ height: 22 }} />

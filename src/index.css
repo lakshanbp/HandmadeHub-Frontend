@@ -85,25 +85,6 @@ code {
     padding: 22px 18px;
   }
 
-  .checkout-layout {
-    gap: 16px !important;
-    margin: 20px 12px !important;
-  }
-
-  .checkout-summary,
-  .checkout-payment {
-    width: 100%;
-    min-width: 0 !important;
-  }
-
-  .checkout-summary {
-    padding: 24px 18px !important;
-  }
-
-  .checkout-payment {
-    padding: 0 4px;
-  }
-
   .category-page {
     padding: 20px 12px !important;
   }

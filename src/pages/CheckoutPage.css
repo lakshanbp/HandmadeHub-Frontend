@@ -1,0 +1,80 @@
+.checkout-layout {
+  width: calc(100% - 48px);
+}
+
+.checkout-summary,
+.checkout-payment {
+  min-width: 0 !important;
+}
+
+.checkout-payment form {
+  width: 100%;
+}
+
+.checkout-item-info {
+  min-width: 0;
+}
+
+.checkout-payment-methods {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .checkout-layout {
+    width: calc(100% - 24px);
+    gap: 20px !important;
+    margin: 20px auto !important;
+  }
+
+  .checkout-summary,
+  .checkout-payment {
+    flex: 1 1 100% !important;
+    width: 100%;
+  }
+
+  .checkout-summary {
+    padding: 24px 18px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .checkout-summary > div:first-child {
+    margin-bottom: 20px !important;
+    font-size: 2rem !important;
+  }
+
+  .checkout-item {
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .checkout-item-info > div:first-child {
+    font-size: 1rem !important;
+    overflow-wrap: anywhere;
+  }
+
+  .checkout-payment {
+    padding: 0;
+  }
+
+  .checkout-form {
+    padding: 24px 18px !important;
+    gap: 14px !important;
+  }
+
+  .checkout-form h3 {
+    margin: 12px 0 6px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .checkout-form > div:first-of-type input,
+  .checkout-form > div:first-of-type select,
+  .checkout-form > div:first-of-type > div input {
+    min-height: 44px;
+    font-size: 16px !important;
+  }
+
+  .checkout-form > button[type="submit"] {
+    min-height: 50px;
+    font-size: 1.1rem !important;
+  }
+}
