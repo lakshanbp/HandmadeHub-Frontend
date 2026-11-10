@@ -183,7 +183,7 @@ const SearchPage: React.FC = () => {
                   </button>
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div className="search-filter-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   {/* Category Filter */}
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>
@@ -267,7 +267,7 @@ const SearchPage: React.FC = () => {
                     <p>Try adjusting your search terms or filters.</p>
                   </div>
                 ) : (
-                  <div style={{ 
+                  <div className="search-result-grid" style={{
                     display: 'grid', 
                     gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
                     gap: '20px' 

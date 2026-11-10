@@ -65,6 +65,28 @@
 
 @media (max-width: 576px) {
   .category-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
-} 
+
+  .category-list-container {
+    margin-bottom: 32px;
+    padding: 0 16px;
+  }
+
+  .category-image {
+    height: 140px;
+  }
+
+  .category-info {
+    padding: 12px 8px;
+  }
+
+  .category-info h3 {
+    font-size: 1rem;
+  }
+
+  .category-info p {
+    font-size: 0.85rem;
+  }
+}

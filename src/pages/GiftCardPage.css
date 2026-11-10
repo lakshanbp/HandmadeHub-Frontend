@@ -144,4 +144,30 @@ textarea {
 
 .buy-now-button:hover {
   background-color: #444;
-} 
+}
+
+@media (max-width: 760px) {
+  .gift-card-page-container {
+    flex-direction: column;
+    gap: 28px;
+    margin: 28px auto;
+    padding: 0 16px;
+  }
+
+  .gift-card-image-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: 200px;
+    font-size: 1.5rem;
+  }
+
+  .gift-card-form-column h1 {
+    font-size: 1.7rem;
+  }
+
+  .amount-selector,
+  .recipient-selector {
+    flex-wrap: wrap;
+  }
+}

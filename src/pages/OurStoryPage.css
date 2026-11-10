@@ -35,4 +35,28 @@
   line-height: 1.8;
   color: #555;
   margin-bottom: 24px;
-} 
+}
+
+@media (max-width: 760px) {
+  .our-story-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    margin: 28px auto;
+    padding: 0 16px;
+  }
+
+  .story-text-column {
+    padding-right: 0;
+  }
+
+  .story-text-column h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .story-text-column p {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+}

@@ -105,8 +105,8 @@ const ProductDetails: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div style={{ background: '#fafafa', minHeight: '100vh', padding: '2rem 0' }}>
-        <div style={{
+      <div className="product-details-page" style={{ background: '#fafafa', minHeight: '100vh', padding: '2rem 0' }}>
+        <div className="product-details-layout" style={{
           maxWidth: 1100,
           margin: '0 auto',
           display: 'flex',
@@ -118,7 +118,7 @@ const ProductDetails: React.FC = () => {
           padding: 32,
         }}>
           {/* Left: Image Gallery */}
-          <div style={{ flex: '1 1 350px', minWidth: 320 }}>
+          <div className="product-gallery" style={{ flex: '1 1 350px', minWidth: 320 }}>
             <img
               src={product.images && product.images[mainImgIdx] ? product.images[mainImgIdx] : 'https://via.placeholder.com/400'}
               alt={product.name}
@@ -148,7 +148,7 @@ const ProductDetails: React.FC = () => {
           </div>
 
           {/* Right: Product Info */}
-          <div style={{ flex: '2 1 400px', minWidth: 320 }}>
+          <div className="product-purchase-info" style={{ flex: '2 1 400px', minWidth: 320 }}>
             <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 8 }}>{product.name}</h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
               <span style={{ background: accent, color: '#7c5a1e', fontWeight: 700, borderRadius: 8, padding: '6px 18px', fontSize: 22 }}>${product.price.toFixed(2)}</span>

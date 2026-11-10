@@ -234,9 +234,9 @@ const CheckoutPage: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div style={{ maxWidth: 1200, margin: '40px auto', background: 'transparent', borderRadius: 16, display: 'flex', gap: 48, minHeight: 520, flexWrap: 'wrap' }}>
+      <div className="checkout-layout" style={{ maxWidth: 1200, margin: '40px auto', background: 'transparent', borderRadius: 16, display: 'flex', gap: 48, minHeight: 520, flexWrap: 'wrap' }}>
         {/* Left: Order Summary */}
-        <div style={{ flex: 1, background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '48px 40px 40px 56px', minWidth: 340, marginBottom: 24 }}>
+        <div className="checkout-summary" style={{ flex: 1, background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '48px 40px 40px 56px', minWidth: 340, marginBottom: 24 }}>
           <div style={{ fontSize: 40, fontWeight: 800, marginBottom: 32, color: '#39324a' }}>${total.toFixed(2)}</div>
           {cart.map(item => (
             <div key={item._id} style={{ display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22 }}>
@@ -273,7 +273,7 @@ const CheckoutPage: React.FC = () => {
           </div>
         </div>
         {/* Right: Shipping & Payment */}
-        <div style={{ flex: 1.2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 350 }}>
+        <div className="checkout-payment" style={{ flex: 1.2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 350 }}>
           {error && <div role="alert" style={{ width: '100%', maxWidth: 500, color: 'red', margin: '0 0 12px', fontWeight: 500 }}>{error}</div>}
           <Elements stripe={stripePromise}>
             <CheckoutForm

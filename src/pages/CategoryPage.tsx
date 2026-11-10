@@ -40,8 +40,8 @@ const CategoryPage: React.FC = () => {
   const description = categoryDescriptions[categoryName || ""] || "Discover unique handmade products in this category.";
 
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "2rem 1rem", background: "#fafafa", minHeight: "100vh" }}>
-      <div style={{
+    <div className="category-page" style={{ maxWidth: 1200, margin: "0 auto", padding: "2rem 1rem", background: "#fafafa", minHeight: "100vh" }}>
+      <div className="category-page-header" style={{
         background: "#efd1a1",
         borderRadius: 24,
         padding: "2rem 2rem 1.5rem 2rem",
@@ -84,9 +84,9 @@ const CategoryPage: React.FC = () => {
       ) : products.length === 0 ? (
         <p>No products found in this category.</p>
       ) : (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+        <div className="category-page-products" style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
           {products.map(product => (
-            <div key={product._id} style={{ width: 220, background: "#fff", borderRadius: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.06)", padding: 16, cursor: "pointer" }} onClick={() => navigate(`/product/${product._id}`)}>
+            <div className="category-page-product" key={product._id} style={{ width: 220, background: "#fff", borderRadius: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.06)", padding: 16, cursor: "pointer" }} onClick={() => navigate(`/product/${product._id}`)}>
               <img src={product.images?.[0] || "/images/logo.png"} alt={product.name} style={{ width: "100%", height: 120, objectFit: "cover", borderRadius: 8, marginBottom: 8 }} />
               <h3 style={{ fontSize: 16, fontWeight: 600 }}>{product.name}</h3>
             </div>

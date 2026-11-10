@@ -158,4 +158,59 @@ body {
 .reviews-list h3, .review-form-container h3 {
   margin-top: 0;
   font-weight: 600;
-} 
+}
+
+@media (max-width: 760px) {
+  .product-details-page {
+    padding: 16px 0 !important;
+  }
+
+  .product-details-layout {
+    margin: 0 12px !important;
+    gap: 20px !important;
+    padding: 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .product-gallery,
+  .product-purchase-info {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .product-purchase-info h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .product-details-container {
+    margin: 12px auto;
+    padding: 12px;
+  }
+
+  .product-layout {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .product-info-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .action-buttons {
+    gap: 10px;
+  }
+
+  .add-to-cart-btn,
+  .buy-now-btn {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+
+  .reviews-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 32px;
+  }
+}

@@ -193,7 +193,26 @@
 
 @media (max-width: 576px) {
   .product-grid-new {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .product-list-container {
+    margin: 32px auto;
+    padding: 0 16px;
+  }
+
+  .product-info-new {
+    margin-top: 10px;
+  }
+
+  .product-info-new h3 {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .product-info-new p {
+    font-size: 0.85rem;
   }
 }
 

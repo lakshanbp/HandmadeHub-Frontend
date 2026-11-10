@@ -13,6 +13,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -28,4 +40,111 @@ code {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .all-products-container {
+    margin: 28px auto;
+    padding: 0 16px;
+  }
+
+  .all-products-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .all-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .product-info-new {
+    margin-top: 10px;
+  }
+
+  .new-in-tag {
+    top: 8px;
+    left: 8px;
+    padding: 3px 7px;
+    font-size: 0.7rem;
+  }
+
+  .order-lookup-container,
+  .community-support-container {
+    width: calc(100% - 32px);
+    margin: 24px auto;
+    padding: 20px 16px;
+  }
+
+  .community-support-card {
+    padding: 22px 18px;
+  }
+
+  .checkout-layout {
+    gap: 16px !important;
+    margin: 20px 12px !important;
+  }
+
+  .checkout-summary,
+  .checkout-payment {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .checkout-summary {
+    padding: 24px 18px !important;
+  }
+
+  .checkout-payment {
+    padding: 0 4px;
+  }
+
+  .category-page {
+    padding: 20px 12px !important;
+  }
+
+  .category-page-header {
+    gap: 16px !important;
+    align-items: flex-start !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .category-page-header h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .category-page-header p {
+    font-size: 1rem !important;
+  }
+
+  .category-page-header img {
+    width: 76px !important;
+    height: 76px !important;
+    flex-shrink: 0;
+  }
+
+  .category-page-product {
+    width: calc(50% - 12px) !important;
+    padding: 10px !important;
+  }
+
+  .category-page-product img {
+    height: 110px !important;
+  }
+
+  .search-filter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .search-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
 }

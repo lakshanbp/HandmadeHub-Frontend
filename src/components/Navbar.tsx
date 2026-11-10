@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -23,6 +23,7 @@ interface UserInfo {
 const Navbar: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { cartCount } = useCart();
 
@@ -49,8 +50,22 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="navbar-new">
-      <div className="navbar-left">
+    <nav className={`navbar-new${menuOpen ? ' menu-open' : ''}`}>
+      <button
+        type="button"
+        className="navbar-menu-toggle"
+        aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={menuOpen}
+        aria-controls="primary-navigation"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? FaTimes({}) : FaBars({})}
+      </button>
+      <div className="navbar-center">
+        <a href="/" className="navbar-logo-new">Handmade Hub</a>
+      </div>
+      <div className="navbar-mobile-menu" id="primary-navigation" onClick={() => setMenuOpen(false)}>
+        <div className="navbar-left">
         <a href="/shop" className="nav-link-new">SHOP</a>
         <a href="/our-story" className="nav-link-new">OUR STORY</a>
         <a href="/gift-card" className="nav-link-new">GIFT CARD</a>
@@ -62,13 +77,9 @@ const Navbar: React.FC = () => {
             )}
           </>
         )}
-      </div>
+        </div>
 
-      <div className="navbar-center">
-        <a href="/" className="navbar-logo-new">Handmade Hub</a>
-      </div>
-
-      <div className="navbar-right">
+        <div className="navbar-right">
         {isLoggedIn && userInfo ? (
           <>
             <span className="nav-action-new">Hi, {userInfo.name}</span>
@@ -92,6 +103,7 @@ const Navbar: React.FC = () => {
           {FaShoppingCart({})}
           {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
         </a>
+        </div>
       </div>
     </nav>
   );
